@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {NewsCardComponent} from '../../shared/components/news-card/news-card.component';
+import {NewsCardComponent} from '../../../shared/components/news-card/news-card.component';
 import {NgForOf, NgIf} from '@angular/common';
 interface Event {
   image: string;
