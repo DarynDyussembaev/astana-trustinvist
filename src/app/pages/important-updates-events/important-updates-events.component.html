@@ -1,1 +1,46 @@
-<p>important-updates-events works!</p>
+<!--<section class="container pt-[150px]">-->
+<!--<h1 class="sections-title">Важные обновления и события</h1>-->
+<!--  <div class="events-container pt-[33px]">-->
+<!--    <app-news-card-->
+<!--      *ngFor="let event of events"-->
+<!--      [image]="event.image"-->
+<!--      [date]="event.date"-->
+<!--      [title]="event.title">-->
+<!--    </app-news-card>-->
+<!--  </div>-->
+<!--</section>-->
+<section class="container news-container ">
+  <h1 class="sections-title">Важные обновления и события</h1>
+
+  <div class="events-wrapper pt-[33px]">
+    <div class="events-container desktop-events" *ngIf="!isMobile">
+      <app-news-card
+        *ngFor="let event of events"
+        [image]="event.image"
+        [date]="event.date"
+        [title]="event.title">
+      </app-news-card>
+    </div>
+
+    <div class="mobile-slider-container" *ngIf="isMobile">
+      <div class="mobile-slider" #slider>
+        <div class="mobile-slide" *ngFor="let event of events">
+          <app-news-card
+            [image]="event.image"
+            [date]="event.date"
+            [title]="event.title">
+          </app-news-card>
+        </div>
+      </div>
+
+      <div class="slider-dots">
+        <span
+          *ngFor="let event of events; let i = index"
+          class="dot"
+          [class.active]="i === currentSlide"
+          (click)="goToSlide(i)">
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

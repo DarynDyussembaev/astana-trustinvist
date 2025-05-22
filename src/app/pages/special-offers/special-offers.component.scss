@@ -1,0 +1,28 @@
+.about-company__title {
+  font-weight: 400;
+  font-size: 20px;
+}
+.about-company__text {
+  padding-top: 40px;
+  width: 440px;
+  font-weight: 500;
+  font-size: 12px;
+}
+//.trans2 {
+//  background-image: url("/assets/img/trans2.png");
+//  background-repeat: no-repeat;
+//  background-size: contain;
+//}
+
+.about-company {
+  max-width: 845px;
+  padding-top: 150px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 999px) {
+  .about-company {
+    display: none;
+  }
+}

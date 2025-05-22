@@ -1,1 +1,15 @@
-<p>card works!</p>
+<div class="card">
+  <div>
+    <div class="card__image-wrapper">
+      <div class="card__absolute">
+        <div class="card__sale">{{promotion}}</div>
+        <span class="card__statuses">{{status}}</span>
+      </div>
+    <img [src]="imageUrl" alt="{{ title }}">
+    </div>
+  </div>
+  <div class="text-center mt-[12px]">
+  <h2 class="card__trans-name">{{ title }}</h2>
+  <p class="subtitle pt-[10px]">{{ subtitle }}</p>
+  </div>
+</div>
