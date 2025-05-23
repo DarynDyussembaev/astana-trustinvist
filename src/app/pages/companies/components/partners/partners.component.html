@@ -1,0 +1,18 @@
+<div class="container flex flex-col gap-7">
+  <div class="sections-title">Партнеры</div>
+
+  <div class="partners-carousel">
+    <div class="partners-track">
+      @for (partner of partners; track partner) {
+        <div class="partner-item">
+          <img [src]="partner.imageUrl" [alt]="partner.alt">
+        </div>
+      }
+      @for (partner of partners; track partner) {
+        <div class="partner-item">
+          <img [src]="partner.imageUrl" [alt]="partner.alt">
+        </div>
+      }
+    </div>
+  </div>
+</div>
