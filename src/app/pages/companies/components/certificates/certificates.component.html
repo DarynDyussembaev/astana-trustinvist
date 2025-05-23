@@ -1,0 +1,19 @@
+<div class="mini-container flex flex-col gap-[31px] lg:gap-[31px] justify-center items-center">
+  <div class="sections-title mb-[6px]">Сертификаты</div>
+
+  <div class="certificates-grid">
+    @for (certificate of certificates; track certificate) {
+      <div class="certificate-item">
+        <img src="{{certificate.imageUrl}}" alt="Certificate">
+      </div>
+    }
+  </div>
+
+  <button
+    (click)="viewAll()"
+    class="btn show-all-btn"
+    [style.display]="showAllCertificates ? 'none' : 'block'"
+  >
+    Показать все
+  </button>
+</div>

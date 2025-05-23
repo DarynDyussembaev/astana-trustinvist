@@ -3,13 +3,11 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts}",
   ],
-  theme: {
-    extend: {
-      colors: {
-        primary: '#009ccd',
-      },
-    },
+  corePlugins: {
+    preflight: false,
   },
-  plugins: [],
+  theme: {
+    extend: {},
+  },
+  plugins: []
 }
-
