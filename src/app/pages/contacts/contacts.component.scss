@@ -1,0 +1,34 @@
+.name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #000000;
+}
+.map-container {
+  width: 100%;
+
+  iframe, script {
+    border: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+@media (max-width: 999px) {
+  .contacts-container {
+    display: none !important;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .map-container {
+    padding: 0;
+    margin: 66px 0 0 0 !important;
+    width: 100%;
+  }
+}
+.title {
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+}
