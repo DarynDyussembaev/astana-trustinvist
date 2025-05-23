@@ -1,14 +1,22 @@
 <section class="container">
-  <div class="flex flex-col justify-self-center w-[225px] text-center">
+  <div class="flex flex-col justify-self-center text-center">
     <h1 class="catalog-title">Наш каталог</h1>
     <p class="subtitle pt-[10px]">Главная / Каталог</p>
   </div>
 
   <div>
     <div class="subtitle">1-12 из 24 товаров</div>
-    @for (card of cards) {
-    <app-card
-    ></app-card>
-    }
+    <div class="offers-container">
+      @for (card of cards; track card) {
+        <app-card
+          [promotion]="card.promotion"
+          [status]="card.status"
+          [imageUrl]="card.imageUrl"
+          [title]="card.title"
+          [subtitle]="card.subtitle">
+          >
+        </app-card>
+      }
+    </div>
   </div>
 </section>
