@@ -1,7 +1,8 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import {Component, OnInit, HostListener, inject} from '@angular/core';
 import { CardComponent } from '../../../../shared/components/card/card.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CategoriesComponent } from '../../components/categories/categories.component';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
@@ -15,6 +16,7 @@ import { CategoriesComponent } from '../../components/categories/categories.comp
   styleUrl: './catalog.component.scss'
 })
 export class CatalogComponent implements OnInit {
+  private _router = inject(Router);
   maxSize = 7;
   public directionLinks: boolean = false;
   public autoHide: boolean = false;
@@ -27,6 +29,7 @@ export class CatalogComponent implements OnInit {
 
   cards = [
     {
+      id:1,
       promotion: 'Акция',
       status: 'В наличии',
       imageUrl: 'assets/img/dp-5.png',
@@ -34,6 +37,7 @@ export class CatalogComponent implements OnInit {
       subtitle: 'Оборудование для дробления и измельчения'
     },
     {
+      id:2,
       promotion: 'Акция',
       status: 'В наличии',
       imageUrl: 'assets/img/dp-5.png',
@@ -41,6 +45,7 @@ export class CatalogComponent implements OnInit {
       subtitle: 'Оборудование для испытания нефтепродуктов'
     },
     {
+      id:3,
       promotion: 'Акция',
       status: 'В наличии',
       imageUrl: 'assets/img/dp-5.png',
@@ -48,6 +53,7 @@ export class CatalogComponent implements OnInit {
       subtitle: 'Оборудование для экспресс-анализа'
     },
     {
+      id:4,
       promotion: 'Акция',
       status: 'В наличии',
       imageUrl: 'assets/img/dp-5.png',
@@ -55,6 +61,7 @@ export class CatalogComponent implements OnInit {
       subtitle: 'РН-метры'
     },
     {
+      id:5,
       promotion: 'Новинка',
       status: 'В наличии',
       imageUrl: 'assets/img/dp-5.png',
@@ -62,6 +69,7 @@ export class CatalogComponent implements OnInit {
       subtitle: 'Измерительные приборы'
     },
     {
+      id:6,
       promotion: 'Хит продаж',
       status: 'В наличии',
       imageUrl: 'assets/img/dp-5.png',
@@ -69,6 +77,7 @@ export class CatalogComponent implements OnInit {
       subtitle: 'Термостатическое оборудование'
     },
     {
+      id:7,
       promotion: '',
       status: 'Под заказ',
       imageUrl: 'assets/img/dp-5.png',
@@ -76,40 +85,13 @@ export class CatalogComponent implements OnInit {
       subtitle: 'Оптическое оборудование'
     },
     {
+      id:8,
       promotion: 'Акция',
       status: 'В наличии',
       imageUrl: 'assets/img/dp-5.png',
       title: 'Центрифуга настольная ЦН-3',
       subtitle: 'Лабораторное оборудование'
     },
-    {
-      promotion: '',
-      status: 'В наличии',
-      imageUrl: 'assets/img/dp-5.png',
-      title: 'Спектрофотометр СФ-46',
-      subtitle: 'Аналитическое оборудование'
-    },
-    {
-      promotion: 'Новинка',
-      status: 'В наличии',
-      imageUrl: 'assets/img/dp-5.png',
-      title: 'Дистиллятор водный ДВ-10',
-      subtitle: 'Водоподготовка'
-    },
-    {
-      promotion: '',
-      status: 'В наличии',
-      imageUrl: 'assets/img/dp-5.png',
-      title: 'Магнитная мешалка ММ-5',
-      subtitle: 'Перемешивающие устройства'
-    },
-    {
-      promotion: 'Хит продаж',
-      status: 'В наличии',
-      imageUrl: 'assets/img/dp-5.png',
-      title: 'Сушильный шкаф СШ-200',
-      subtitle: 'Сушильное оборудование'
-    }
   ];
 
   ngOnInit(): void {
@@ -153,5 +135,9 @@ export class CatalogComponent implements OnInit {
       this.maxSize = 7;
       this.config.itemsPerPage = 9;
     }
+  }
+
+  public navigateToDetail(id: number): void {
+    this._router.navigate([`/catalog/${id}`]);
   }
 }

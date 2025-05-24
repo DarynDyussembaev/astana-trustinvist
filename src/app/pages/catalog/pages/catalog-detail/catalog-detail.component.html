@@ -1,0 +1,29 @@
+<div class="container flex gap-10">
+  <app-categories class="w-full lg:w-auto lg:min-w-[300px] lg:max-w-[350px]"></app-categories>
+
+  <img src="assets/img/dp-5.png" class="good-image" alt="good-image">
+
+  <div class="good-detail flex flex-col gap-4">
+    <div class="text-xl font-semibold">Вальцовый уплотнитель 320х260 мм</div>
+    <div class="subtitle">Под заказ</div>
+    <div class="subtitle">Производитель:<span style="color: #828282"> BPS Wennigsen, Германия</span></div>
+    <div>
+      <div class="subtitle">Основные характеристики:</div>
+      @for (good of goods; track good.id) {
+        <div class="subtitle" style="color: #828282">{{ good.characteristics }}</div>
+      }
+    </div>
+    <div class="flex flex-col gap-1">
+      <div class="subtitle">Количество</div>
+      <div class="good-count">
+        <div style="color: #828282">-</div>
+        <div>1</div>
+        <div style="color: #828282">+</div>
+      </div>
+    </div>
+    <div class="flex gap-3">
+      <button class="btn">В корзину</button>
+      <button class="btn">Задать вопрос</button>
+    </div>
+  </div>
+</div>

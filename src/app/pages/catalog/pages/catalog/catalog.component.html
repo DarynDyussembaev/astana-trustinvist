@@ -13,6 +13,7 @@
       <div class="offers-container">
         @for (card of cards | paginate: config; track card) {
           <app-card
+            (click)="navigateToDetail(card.id)"
             [promotion]="card.promotion"
             [status]="card.status"
             [imageUrl]="card.imageUrl"
