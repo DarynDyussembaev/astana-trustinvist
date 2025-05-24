@@ -1,1 +1,60 @@
-<p>categories works!</p>
+<div class="menu-container hidden lg:flex flex-col">
+  <div class="text-sm font-medium mb-[26px]">Категории</div>
+  <ul class="menu-list">
+    <li *ngFor="let item of menuItems" class="menu-item">
+      <div class="menu-item-content" (click)="toggleExpanded(item)">
+        <span class="subtitle">{{ item.name }}</span>
+        <span *ngIf="item.children && item.children.length > 0"
+              class="arrow"
+              [class.expanded]="item.expanded">
+          ❯
+        </span>
+      </div>
+      <ul *ngIf="item.children && item.children.length > 0 && item.expanded" class="submenu">
+        <li *ngFor="let child of item.children"
+            class="submenu-item subtitle"
+            (click)="selectItem(child)">
+          {{ child.name }}
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+<div class="mobile-menu lg:hidden mb-6">
+  <button class="btn w-full"
+          (click)="toggleMenu()"
+          [attr.aria-expanded]="isMenuOpen"
+          [attr.aria-label]="isMenuOpen ? 'Закрыть категории' : 'Открыть категории'">
+    <div class="flex justify-between items-center">
+      <span class="font-medium">Категории</span>
+      <img src="assets/img/arrow-down.svg" class="transition-transform"
+           [class.rotate-180]="isMenuOpen" alt="">
+    </div>
+  </button>
+
+  <div class="mobile-menu-content"
+       [class.open]="isMenuOpen"
+       [attr.aria-hidden]="!isMenuOpen">
+    <ul class="mobile-menu-list">
+      <li *ngFor="let item of menuItems" class="mobile-menu-item">
+        <div class="mobile-menu-item-content" (click)="toggleExpanded(item)">
+          <span class="mobile-menu-item-text">{{ item.name }}</span>
+          <span *ngIf="item.children && item.children.length > 0"
+                class="mobile-arrow"
+                [class.expanded]="item.expanded">
+            ❯
+          </span>
+        </div>
+        <ul *ngIf="item.children && item.children.length > 0 && item.expanded"
+            class="mobile-submenu">
+          <li *ngFor="let child of item.children"
+              class="mobile-submenu-item"
+              (click)="selectItem(child)">
+            {{ child.name }}
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>

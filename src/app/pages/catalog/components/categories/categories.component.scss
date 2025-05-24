@@ -1,0 +1,133 @@
+.mobile-menu-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+
+  &.open {
+    max-height: 500px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 8px;
+  }
+}
+
+.menu-container {
+  min-width: 280px;
+  max-width: 350px;
+}
+
+.menu-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+}
+
+.arrow {
+  color: #999;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+  margin-left: 8px;
+
+  &.expanded {
+    transform: rotate(90deg);
+  }
+}
+
+.submenu {
+  padding-left: 16px;
+  margin-top: 4px;
+}
+
+.submenu-item {
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  margin-bottom: 2px;
+}
+
+.mobile-menu {
+  width: 100%;
+  background-color: #E67817;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.btn {
+  border: none;
+}
+
+.mobile-menu-content {
+  transition: max-height 0.3s ease;
+
+  &.open {
+    max-height: 500px;
+    border-top: 1px solid #e5e7eb;
+    margin-top: -1px;
+  }
+}
+
+.mobile-menu-list {
+  padding: 8px 0;
+}
+
+.mobile-menu-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.mobile-menu-item-text {
+  font-weight: 500;
+  font-size: 10px;
+}
+
+.mobile-arrow {
+  color: #fff;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+
+  &.expanded {
+    transform: rotate(90deg);
+  }
+}
+
+.mobile-submenu {
+  padding: 8px 0;
+}
+
+.mobile-submenu-item {
+  font-size: 10px;
+  cursor: pointer;
+  padding: 10px 34px;
+  transition: all 0.2s ease;
+  line-height: 1.4;
+
+  @media (min-width: 640px) {
+    padding: 12px 42px;
+  }
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .hidden {
+    display: block;
+  }
+}

@@ -7,9 +7,6 @@ import {Component} from '@angular/core';
   styleUrl: './employees.component.scss'
 })
 export class EmployeesComponent {
-  // Делаем Math доступным в шаблоне
-  Math = Math;
-
   employees = [
     {
       title: 'Руководители',
