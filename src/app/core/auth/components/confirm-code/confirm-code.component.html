@@ -1,0 +1,56 @@
+<div class="container">
+  <img routerLink="Home" src="assets/img/logo.png" style="cursor: pointer">
+
+  <div class="confirm-container">
+    <div class="confirm-header">
+      <h2>Подтверждение Email</h2>
+    </div>
+
+    <form (ngSubmit)="onConfirmCode()" #confirmForm="ngForm">
+      <div class="form-group">
+        <label for="code">Введите 6-символьный код:</label>
+        <input
+          type="text"
+          id="code"
+          name="code"
+          [(ngModel)]="code"
+          (input)="onCodeInput($event)"
+          placeholder="ABC123"
+          maxlength="6"
+          class="code-input"
+          required>
+      </div>
+
+      <div class="button-group">
+        <button type="submit" [disabled]="isLoading || code.length !== 6" class="btn confirm-btn">
+          {{ isLoading ? 'Подтверждение...' : 'Подтвердить' }}
+        </button>
+      </div>
+
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+
+      <div *ngIf="successMessage" class="success">
+        {{ successMessage }}
+      </div>
+    </form>
+
+    <div class="resend-section">
+      <p>Не получили код?</p>
+      <button (click)="resendCode()" [disabled]="isLoading" class="resend-btn">
+        Отправить повторно
+      </button>
+    </div>
+
+    <div class="back-links">
+      <a (click)="goBackToRegister()">← Назад к регистрации</a>
+      <span class="separator">|</span>
+      <a routerLink="/login">Уже есть аккаунт? Войти</a>
+    </div>
+
+    <div class="back-to-site">
+      <a routerLink="/">← Back to main site</a>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,11 @@ export interface RegisterLoginData {
   password: string;
 }
 
+export interface ConfirmCodeData {
+  email: string;
+  code: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +27,18 @@ export class AuthService {
 
   register(userData: RegisterLoginData): Observable<string> {
     return this.http.post(`${this.baseUrl}/auth/register`, userData, {
+      responseType: 'text'
+    });
+  }
+
+  confirmCode(data: ConfirmCodeData): Observable<string> {
+    return this.http.post(`${this.baseUrl}/auth/register/confirm-code`, data, {
+      responseType: 'text'
+    });
+  }
+
+  resendCode(email: string): Observable<string> {
+    return this.http.post(`${this.baseUrl}/auth/reset-request`, { email }, {
       responseType: 'text'
     });
   }
