@@ -1,3 +1,5 @@
+import {NewsComponent} from './pages/news/news.component';
+import {PlacingAnOrderComponent} from './pages/placing-an-order/placing-an-order.component';
 import { Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { CatalogComponent } from './pages/catalog/pages/catalog/catalog.component';
@@ -8,6 +10,7 @@ import { LoginComponent } from './core/auth/components/login/login.component';
 import { RegisterComponent } from './core/auth/components/register/register.component';
 import { ConfirmCodeComponent } from './core/auth/components/confirm-code/confirm-code.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import {CallbackComponent} from './pages/callback/callback.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -35,6 +38,18 @@ export const routes: Routes = [
         path: "contacts",
         component: ContactsComponent,
       },
+      {
+        path: 'news',
+        component: NewsComponent
+      },
+      {
+        path: 'placing-an-order',
+        component: PlacingAnOrderComponent,
+      },
+      {
+        path: 'callback',
+        component: CallbackComponent,
+      }
     ]
   },
   {
