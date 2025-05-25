@@ -51,12 +51,9 @@ export class ConfirmCodeComponent implements OnInit {
       code: this.code.toString()
     };
 
-    console.log('Отправляем код подтверждения:', confirmData);
-
     this.authService.confirmCode(confirmData)
       .subscribe({
         next: (response) => {
-          console.log('Код подтвержден:', response);
           this.successMessage = 'Email успешно подтвержден! Перенаправляем на страницу входа...';
 
           setTimeout(() => {
@@ -64,7 +61,6 @@ export class ConfirmCodeComponent implements OnInit {
           }, 2000);
         },
         error: (error) => {
-          console.error('Ошибка подтверждения кода:', error);
           this.errorMessage = 'Неверный или просроченный код. Попробуйте еще раз.';
           this.isLoading = false;
         },
@@ -91,14 +87,12 @@ export class ConfirmCodeComponent implements OnInit {
     this.authService.resendCode(this.email)
       .subscribe({
         next: (response) => {
-          console.log('Код отправлен повторно:', response);
           this.successMessage = 'Код подтверждения отправлен повторно на ваш email';
           setTimeout(() => {
             this.successMessage = '';
           }, 3000);
         },
         error: (error) => {
-          console.error('Ошибка повторной отправки:', error);
           this.errorMessage = 'Ошибка при повторной отправке кода';
         },
         complete: () => {

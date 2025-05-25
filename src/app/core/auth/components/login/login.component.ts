@@ -2,7 +2,7 @@ import {Component, inject} from '@angular/core';
 import {Router, RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {AuthService} from '../../services/auth.service';
+import {AuthService, RegisterLoginData} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +15,7 @@ export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
 
-  credentials = {
-    email: '',
-    password: ''
-  };
+  credentials: RegisterLoginData = {} as RegisterLoginData;
 
   isLoading = false;
   errorMessage = '';
