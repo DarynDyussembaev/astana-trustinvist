@@ -1,0 +1,15 @@
+.news-titles {
+  font-weight: 600;
+  font-size: 30px;
+  color: #000000;
+}
+.news-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+}
+@media (max-width: 999px) {
+  .news-card {
+    grid-template-columns: 1fr;
+  }
+}

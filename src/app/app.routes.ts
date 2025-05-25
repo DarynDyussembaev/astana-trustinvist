@@ -7,6 +7,7 @@ import {adminGuard} from './core/auth/guards/admin.guard';
 import {LoginComponent} from './core/auth/components/login/login.component';
 import {MainLayoutComponent} from './pages/main-layout/main-layout.component';
 import {RegisterComponent} from './core/auth/components/register/register.component';
+import {NewsComponent} from './pages/news/news.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -34,6 +35,10 @@ export const routes: Routes = [
         path: "contacts",
         component: ContactsComponent,
       },
+      {
+        path: 'news',
+        component: NewsComponent
+      }
     ]
   },
   {
