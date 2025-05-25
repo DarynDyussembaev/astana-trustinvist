@@ -3,27 +3,51 @@ import {MainComponent} from './pages/main/main.component';
 import {CatalogComponent} from './pages/catalog/pages/catalog/catalog.component';
 import {CompaniesComponent} from './pages/companies/pages/companies/companies.component';
 import {ContactsComponent} from './pages/contacts/contacts.component';
+import {adminGuard} from './core/auth/guards/admin.guard';
+import {LoginComponent} from './core/auth/components/login/login.component';
+import {MainLayoutComponent} from './pages/main-layout/main-layout.component';
+import {RegisterComponent} from './core/auth/components/register/register.component';
 
 export const routes: Routes = [
-  {path: "", redirectTo: "Home", pathMatch: "full"},
+  { path: '', redirectTo: 'Home', pathMatch: 'full' },
   {
-    path: "Home",
-    component: MainComponent,
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: "Home",
+        component: MainComponent,
+      },
+      {
+        path: "companies",
+        component: CompaniesComponent,
+      },
+      {
+        path: "catalog",
+        component: CatalogComponent,
+      },
+      {
+        path: 'catalog/:id',
+        loadComponent: () => import('./pages/catalog/pages/catalog-detail/catalog-detail.component').then(c => c.CatalogDetailComponent)
+      },
+      {
+        path: "contacts",
+        component: ContactsComponent,
+      },
+    ]
   },
   {
-    path: "companies",
-    component: CompaniesComponent,
+    path: 'login',
+    component: LoginComponent
   },
   {
-    path: "catalog",
-    component: CatalogComponent,
+    path: 'register',
+    component: RegisterComponent
   },
   {
-    path: 'catalog/:id',
-    loadComponent: () => import('./pages/catalog/pages/catalog-detail/catalog-detail.component').then(c => c.CatalogDetailComponent)
+    path: 'admin',
+    loadComponent: () => import('./pages/admin/pages/admin-panel/admin-panel.component').then(c => c.AdminPanelComponent),
+    canActivate: [adminGuard]
   },
-  {
-    path: "contacts",
-    component: ContactsComponent,
-  }
+  {path: '**', redirectTo: 'Home'},
 ];
