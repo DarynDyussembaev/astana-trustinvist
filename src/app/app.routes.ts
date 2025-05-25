@@ -8,6 +8,7 @@ import {LoginComponent} from './core/auth/components/login/login.component';
 import {MainLayoutComponent} from './pages/main-layout/main-layout.component';
 import {RegisterComponent} from './core/auth/components/register/register.component';
 import {NewsComponent} from './pages/news/news.component';
+import {PlacingAnOrderComponent} from './pages/placing-an-order/placing-an-order.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -38,7 +39,11 @@ export const routes: Routes = [
       {
         path: 'news',
         component: NewsComponent
-      }
+      },
+      {
+        path: 'placing-an-order',
+        component: PlacingAnOrderComponent,
+      },
     ]
   },
   {
