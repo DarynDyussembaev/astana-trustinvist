@@ -1,0 +1,44 @@
+<div class="container">
+  <img routerLink="Home" src="assets/img/logo.png" style="cursor: pointer">
+
+  <div class="login-container">
+
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          [(ngModel)]="credentials.email"
+          placeholder="admin@example.com"
+          required>
+      </div>
+
+      <div class="form-group">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          [(ngModel)]="credentials.password"
+          placeholder="Enter your password"
+          required>
+      </div>
+
+      <div class="flex items-center gap-6 justify-center">
+        <button type="submit" [disabled]="loginForm.invalid || isLoading" class="btn login-btn">
+          {{ isLoading ? 'Logging in...' : 'Login to Admin Panel' }}
+        </button>
+
+        <a routerLink="/register" class="register-btn">Регистрация</a>
+      </div>
+
+      <div *ngIf="errorMessage" class="error">
+        {{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="back-to-site">
+      <a (click)="goBackToSite()">← Back to main site</a>
+    </div>
+  </div>
+</div>
