@@ -23,7 +23,6 @@ export class RegisterComponent {
 
   isLoading = false;
   errorMessage = '';
-  successMessage = '';
 
   onRegister() {
     if (!this.validateForm()) {
@@ -32,25 +31,27 @@ export class RegisterComponent {
 
     this.isLoading = true;
     this.errorMessage = '';
-    this.successMessage = '';
 
     const registerData = {
       email: this.credentials.email,
       password: this.credentials.password
     };
 
+    console.log('Регистрируем пользователя:', registerData);
+
     this.authService.register(registerData)
       .subscribe({
         next: (response) => {
-          this.successMessage = 'Регистрация прошла успешно! Перенаправляем на страницу входа...';
-          setTimeout(() => {
-            this.router.navigate(['/login']);
-          }, 2000);
+          console.log('Регистрация успешна:', response);
+
+          this.router.navigate(['/confirm-code'], {
+            queryParams: { email: this.credentials.email }
+          });
         },
         error: (error) => {
+          console.error('Ошибка регистрации:', error);
           this.errorMessage = 'Ошибка регистрации. Возможно, пользователь уже существует.';
           this.isLoading = false;
-          console.error('Registration error:', error);
         },
         complete: () => {
           this.isLoading = false;
