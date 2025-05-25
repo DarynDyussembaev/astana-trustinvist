@@ -10,6 +10,7 @@ import { LoginComponent } from './core/auth/components/login/login.component';
 import { RegisterComponent } from './core/auth/components/register/register.component';
 import { ConfirmCodeComponent } from './core/auth/components/confirm-code/confirm-code.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import {CallbackComponent} from './pages/callback/callback.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -45,6 +46,10 @@ export const routes: Routes = [
         path: 'placing-an-order',
         component: PlacingAnOrderComponent,
       },
+      {
+        path: 'callback',
+        component: CallbackComponent,
+      }
     ]
   },
   {
