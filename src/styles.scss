@@ -136,8 +136,14 @@ a {
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 40px;
 }
+.main {
+  margin-top: 80px;
+}
 
 @media (max-width: 999px) {
+  .main {
+    margin-top: 0;
+  }
   .offers-container {
     gap: 20px;
   }

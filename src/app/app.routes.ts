@@ -11,6 +11,7 @@ import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import {NewsComponent} from './pages/news/news.component';
 import {PlacingAnOrderComponent} from './pages/placing-an-order/placing-an-order.component';
 import {CallbackComponent} from './pages/callback/callback.component';
+import {BasketComponent} from './pages/basket/basket.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -49,6 +50,10 @@ export const routes: Routes = [
       {
         path: 'callback',
         component: CallbackComponent,
+      },
+      {
+        path: 'basket',
+        component: BasketComponent,
       }
     ]
   },

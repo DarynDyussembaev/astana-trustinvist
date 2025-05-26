@@ -32,10 +32,10 @@
 @media (max-width: 999px) {
  .header {
    padding: 20px;
-   background-color: #F1F8FF;
+   background-color: #ffffff;
  }
   .header__container {
-    padding: 0;
+    padding: 0 !important;
   }
   .header__basket {
     background-color: #E67817;

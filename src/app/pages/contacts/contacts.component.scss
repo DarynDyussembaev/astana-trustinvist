@@ -12,13 +12,19 @@
     height: 100%;
   }
 }
-@media (max-width: 999px) {
-  .contacts-container {
-    display: none !important;
-  }
+.call {
+  width: 840px;
 
+}
+@media (max-width: 999px) {
+  //.contacts-container {
+  //  display: none !important;
+  //}
   .container {
     padding: 0;
+  }
+  .call {
+    width: 100%;
   }
 
   .map-container {
@@ -31,4 +37,35 @@
   text-align: center;
   font-weight: 400;
   font-size: 20px;
+}
+.title-phone {
+  display: none;
+}
+@media (max-width: 999px) {
+  .container {
+    padding-inline: 22px;
+  }
+  .map-container {
+    padding: 0;
+    margin: 66px 0 0 0 !important;
+    width: 100%;
+  }
+  .mapping {}
+  .title-desktop {
+    display: none;
+  }
+  .title-phone {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .none-phone {
+    display: none;
+  }
+  //.int {
+  //  width: 350px;
+  //}
+  form {
+    align-items: center;
+  }
 }
