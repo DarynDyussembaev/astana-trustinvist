@@ -37,19 +37,15 @@ export class RegisterComponent {
       password: this.credentials.password
     };
 
-    console.log('Регистрируем пользователя:', registerData);
-
     this.authService.register(registerData)
       .subscribe({
         next: (response) => {
-          console.log('Регистрация успешна:', response);
 
           this.router.navigate(['/confirm-code'], {
             queryParams: { email: this.credentials.email }
           });
         },
         error: (error) => {
-          console.error('Ошибка регистрации:', error);
           this.errorMessage = 'Ошибка регистрации. Возможно, пользователь уже существует.';
           this.isLoading = false;
         },
