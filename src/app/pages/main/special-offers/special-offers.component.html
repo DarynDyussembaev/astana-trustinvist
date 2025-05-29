@@ -4,11 +4,10 @@
   <div class="offers-container pt-[32px]">
     <app-card
       *ngFor="let card of cards"
-      [promotion] = "card.promotion"
-      [status]="card.status"
+      [promotion] = "card.categoryName"
       [imageUrl]="card.imageUrl"
-      [title]="card.title"
-      [subtitle]="card.subtitle">
+      [title]="card.name"
+      [subtitle]="card.description">
     </app-card>
   </div>
 </section>
@@ -17,12 +16,11 @@
 
   <div class="offers-container pt-[32px]">
     <app-card
-      *ngFor="let card of cards"
-      [promotion] = "card.promotion"
-      [status]="card.status"
+      *ngFor="let card of cardsAny"
+      [promotion] = "card.categoryName"
       [imageUrl]="card.imageUrl"
-      [title]="card.title"
-      [subtitle]="card.subtitle">
+      [title]="card.name"
+      [subtitle]="card.description">
     </app-card>
   </div>
 </section>
