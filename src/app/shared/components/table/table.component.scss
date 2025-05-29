@@ -1,0 +1,33 @@
+table {
+  width: 697px;
+}
+
+thead {
+  font-size: 10px;
+  color: #363636
+}
+
+tbody {
+  font-size: 10px;
+  color: #015198;
+  font-weight: 400;
+}
+
+tr {
+  text-align: left;
+}
+
+th, td {
+  padding: 16px;
+  border-bottom: 1px solid #D9D9D9;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+  color: #015198;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

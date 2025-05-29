@@ -1,6 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import {environment} from '../../../../environments/environment';
 
 export interface RegisterLoginData {
   email: string;
@@ -17,28 +18,28 @@ export interface ConfirmCodeData {
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = `${environment.baseUrl}/auth`;
 
   login(userData: RegisterLoginData): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/login`, userData, {
+    return this.http.post(`${this.baseUrl}/login`, userData, {
       responseType: 'text'
     });
   }
 
   register(userData: RegisterLoginData): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/register`, userData, {
+    return this.http.post(`${this.baseUrl}/register`, userData, {
       responseType: 'text'
     });
   }
 
   confirmCode(data: ConfirmCodeData): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/register/confirm-code`, data, {
+    return this.http.post(`${this.baseUrl}/register/confirm-code`, data, {
       responseType: 'text'
     });
   }
 
   resendCode(email: string): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/reset-request`, { email }, {
+    return this.http.post(`${this.baseUrl}/reset-request`, { email }, {
       responseType: 'text'
     });
   }

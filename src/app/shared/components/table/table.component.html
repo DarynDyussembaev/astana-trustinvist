@@ -1,0 +1,39 @@
+<table>
+  <colgroup>
+    <col *ngFor="let column of config.columns" style="width: 152px">
+    <col style="width: 100px" *ngIf="hasActions">
+  </colgroup>
+  <thead>
+  <tr>
+    <th *ngFor="let column of config.columns">{{ column.label }}</th>
+    <th *ngIf="hasActions">Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of data; trackBy: trackByFn">
+    <td *ngFor="let column of config.columns">
+      {{ getNestedValue(item, column.key) }}
+    </td>
+    <td *ngIf="hasActions">
+      <button
+        *ngIf="config.actions?.delete"
+        class="delete-btn"
+        (click)="onAction('delete', item)">
+        Удалить
+      </button>
+      <button
+        *ngIf="config.actions?.edit"
+        class="edit-btn"
+        (click)="onAction('edit', item)">
+        Редактировать
+      </button>
+      <button
+        *ngIf="config.actions?.view"
+        class="view-btn"
+        (click)="onAction('view', item)">
+        Просмотр
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

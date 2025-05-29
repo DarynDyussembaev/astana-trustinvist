@@ -1,0 +1,10 @@
+<div class="text-right mr-[145px]">
+<button class="btn">Добавить</button>
+
+<app-table
+  [data]="categories || []"
+  [config]="tableConfig"
+  [trackByField]="'id'"
+  (actionClicked)="onTableAction($event)"
+></app-table>
+</div>
