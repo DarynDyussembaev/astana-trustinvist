@@ -22,6 +22,10 @@ export class TableComponent {
   @Input() trackByField: string = 'id';
 
   @Output() actionClicked = new EventEmitter<TableAction>();
+  @Output() rowClicked = new EventEmitter<any>();
+
+  // Поля которые содержат изображения
+  private imageFields = ['imageUrl', 'photo'];
 
   get hasActions(): boolean {
     return !!(this.config.actions?.delete || this.config.actions?.edit || this.config.actions?.view);
@@ -35,7 +39,21 @@ export class TableComponent {
     this.actionClicked.emit({ type, item });
   }
 
+  onRowClick(item: any): void {
+    this.rowClicked.emit(item);
+  }
+
   getNestedValue(obj: any, path: string): any {
     return path.split('.').reduce((current, key) => current?.[key], obj);
+  }
+
+  isImageColumn(columnKey: string): boolean {
+    return this.imageFields.includes(columnKey);
+  }
+
+  onImageError(event: any): void {
+    event.target.style.display = 'none';
+    // Можно добавить placeholder изображение
+    // event.target.src = 'assets/images/no-image-placeholder.png';
   }
 }

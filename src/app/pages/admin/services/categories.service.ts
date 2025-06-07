@@ -6,12 +6,13 @@ import {Observable} from 'rxjs';
 export interface GetCategoriesResponse {
   id: number;
   name: string;
-  categories: GetCategoriesResponse[]
+  parentCategory?: string;
+  categories: string[]
 }
 
 export interface CreateEditCategory {
   name: string;
-  parentId: number;
+  parentId: number | null;
 }
 
 @Injectable({
@@ -20,9 +21,6 @@ export interface CreateEditCategory {
 export class CategoriesService {
   private http = inject(HttpClient);
   private baseUrl = `${environment.baseUrl}/category`;
-
-  constructor() {
-  }
 
   public getAllCategories(): Observable<GetCategoriesResponse[]> {
     return this.http.get<GetCategoriesResponse[]>(`${this.baseUrl}/getAll`);
@@ -39,7 +37,9 @@ export class CategoriesService {
   }
 
   public editCategory(id: number, categoryData: CreateEditCategory): Observable<GetCategoriesResponse> {
-    return this.http.put<GetCategoriesResponse>(`${this.baseUrl}/${id}`, categoryData);
+    const formData = new FormData();
+    formData.append('data', JSON.stringify(categoryData));
+    return this.http.put<GetCategoriesResponse>(`${this.baseUrl}/${id}`, formData);
   }
 
   public deleteCategory(id: number): Observable<void> {

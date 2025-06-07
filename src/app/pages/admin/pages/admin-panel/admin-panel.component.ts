@@ -1,13 +1,13 @@
 import {Component, inject} from '@angular/core';
-import {Router, RouterLink} from '@angular/router';
+import {Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
 import {AuthService} from '../../../../core/auth/services/auth.service';
-import {CategoriesComponent} from '../../components/categories/categories.component';
 
 @Component({
   selector: 'app-admin-panel',
   imports: [
     RouterLink,
-    CategoriesComponent
+    RouterOutlet,
+    RouterLinkActive,
   ],
   templateUrl: './admin-panel.component.html',
   styleUrl: './admin-panel.component.scss'

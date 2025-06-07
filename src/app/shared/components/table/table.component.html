@@ -1,6 +1,10 @@
-<table>
+<div *ngIf="data.length === 0" class="empty-state">
+  Нет данных для отображения
+</div>
+
+<table *ngIf="data.length > 0">
   <colgroup>
-    <col *ngFor="let column of config.columns" style="width: 152px">
+    <col *ngFor="let column of config.columns" [style.width]="column.width || '152px'">
     <col style="width: 100px" *ngIf="hasActions">
   </colgroup>
   <thead>
@@ -10,28 +14,30 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let item of data; trackBy: trackByFn">
+  <tr
+    *ngFor="let item of data; trackBy: trackByFn"
+    class="clickable-row"
+    (click)="onRowClick(item)">
     <td *ngFor="let column of config.columns">
-      {{ getNestedValue(item, column.key) }}
+      <div *ngIf="isImageColumn(column.key); else textValue">
+        <img
+          *ngIf="getNestedValue(item, column.key)"
+          [src]="getNestedValue(item, column.key)"
+          [alt]="item.name || 'Image'"
+          class="table-image"
+          (error)="onImageError($event)">
+        <span *ngIf="!getNestedValue(item, column.key)" class="no-image">Нет изображения</span>
+      </div>
+      <ng-template #textValue>
+        {{ getNestedValue(item, column.key) }}
+      </ng-template>
     </td>
-    <td *ngIf="hasActions">
+    <td *ngIf="hasActions" class="actions-cell" (click)="$event.stopPropagation()">
       <button
         *ngIf="config.actions?.delete"
         class="delete-btn"
         (click)="onAction('delete', item)">
         Удалить
-      </button>
-      <button
-        *ngIf="config.actions?.edit"
-        class="edit-btn"
-        (click)="onAction('edit', item)">
-        Редактировать
-      </button>
-      <button
-        *ngIf="config.actions?.view"
-        class="view-btn"
-        (click)="onAction('view', item)">
-        Просмотр
       </button>
     </td>
   </tr>

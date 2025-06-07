@@ -4,13 +4,14 @@
     <div class="logout" (click)="logout()">Выйти</div>
   </div>
 
-  <div class="flex justify-between">
-    <div>
-      <div>Категории</div>
-      <div>Продукты</div>
-      <div>Сотрудники</div>
-      <div>Новости</div>
-    </div>
-    <app-categories></app-categories>
+  <div class="flex justify-between pt-[80px]">
+    <nav class="admin-nav">
+      <div routerLink="/admin/categories" routerLinkActive="active" class="nav-item">Категории</div>
+      <div routerLink="/admin/products" routerLinkActive="active" class="nav-item">Продукты</div>
+      <div routerLink="/admin/employees" routerLinkActive="active" class="nav-item">Сотрудники</div>
+      <div routerLink="/admin/news" routerLinkActive="active" class="nav-item">Новости</div>
+    </nav>
+
+    <router-outlet></router-outlet>
   </div>
 </div>
