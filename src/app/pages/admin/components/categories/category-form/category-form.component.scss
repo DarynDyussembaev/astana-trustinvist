@@ -14,56 +14,46 @@
 .modal-container {
   background: white;
   border-radius: 8px;
-  padding: 40px;
+  padding: 145px 75px;
   width: 90%;
-  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  max-width: 662px;
   position: relative;
-  max-height: 90vh;
-  overflow-y: auto;
+  max-height: 768px;
+  overflow-y: hidden;
 }
 
 .close-btn {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 41px;
+  right: 46px;
   background: none;
   border: none;
-  font-size: 24px;
   cursor: pointer;
-  color: #999;
-  padding: 0;
-  width: 30px;
-  height: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.close-btn:hover {
-  color: #333;
+  font-size: 42px;
+  color: #0A0A0A;
 }
 
 .modal-title {
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 600;
-  margin: 0 0 40px 0;
-  color: #333;
 }
 
 .form-field {
-  margin-bottom: 20px;
+  margin-bottom: 7px;
 }
 
 .form-input, .form-select {
   width: 100%;
-  padding: 16px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 16px;
+  padding: 20px;
+  border: 1px solid #D9D9D9;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 500;
   outline: none;
-  transition: border-color 0.2s ease;
-  box-sizing: border-box;
-  background: white;
+  color: #828282;
 }
 
 .form-input:focus, .form-select:focus {
@@ -71,7 +61,7 @@
 }
 
 .form-input::placeholder {
-  color: #999;
+  color: #828282;
 }
 
 .form-select {
@@ -85,21 +75,7 @@
 }
 
 .submit-button {
-  width: 100%;
-  background: #ff8c00;
-  color: white;
-  border: none;
-  padding: 16px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  margin-top: 20px;
-}
-
-.submit-button:hover:not(:disabled) {
-  background: #e67e00;
+ cursor: pointer;
 }
 
 .submit-button:disabled {

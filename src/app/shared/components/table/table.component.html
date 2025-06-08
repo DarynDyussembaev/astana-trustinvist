@@ -1,8 +1,4 @@
-<div *ngIf="data.length === 0" class="empty-state">
-  Нет данных для отображения
-</div>
-
-<table *ngIf="data.length > 0">
+<table>
   <colgroup>
     <col *ngFor="let column of config.columns" [style.width]="column.width || '152px'">
     <col style="width: 100px" *ngIf="hasActions">

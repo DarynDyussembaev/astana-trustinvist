@@ -1,1 +1,72 @@
-<p>employee-form works!</p>
+<div class="modal-overlay">
+  <div class="modal-container">
+    <button class="close-btn" (click)="onCancel()">×</button>
+
+    <h2 class="modal-title">{{ dialogTitle }}</h2>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-field">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Имя сотрудника"
+          class="form-input">
+      </div>
+
+      <div class="form-field">
+        <input
+          type="text"
+          formControlName="position"
+          placeholder="Должность"
+          class="form-input">
+      </div>
+
+      <div class="form-field">
+        <input
+          type="tel"
+          formControlName="number"
+          placeholder="Номер телефона"
+          class="form-input">
+      </div>
+
+      <div class="file-upload-section">
+        <div class="file-upload-left">
+          <span class="subtitle font-medium pl-5">Изображение</span>
+          <div *ngIf="photoPreview || currentPhotoUrl" class="photo-preview-section">
+            <div class="photo-preview-container">
+              <img
+                [src]="photoPreview || currentPhotoUrl"
+                alt="Превью фото"
+                class="photo-preview"
+                (error)="onImageError($event)">
+              <button
+                type="button"
+                class="remove-photo-btn"
+                (click)="removePhoto()">×</button>
+            </div>
+            <div class="photo-info">
+              <span *ngIf="selectedFileName">{{ selectedFileName }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="file-upload-right">
+          <label for="photoFile" class="file-upload-btn">Добавить</label>
+          <input
+            type="file"
+            id="photoFile"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            class="file-input-hidden">
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="employeeForm.invalid || (!isEditMode && !selectedFile && !currentPhotoUrl)"
+        class="btn submit-button">
+        {{ isEditMode ? 'Изменить' : 'Добавить' }}
+      </button>
+    </form>
+  </div>
+</div>
