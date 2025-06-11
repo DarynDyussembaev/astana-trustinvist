@@ -1,8 +1,11 @@
 import {Component, Input} from '@angular/core';
+import {DatePipe} from '@angular/common';
 
 @Component({
   selector: 'app-news-card',
-  imports: [],
+  imports: [
+    DatePipe
+  ],
   templateUrl: './news-card.component.html',
   standalone: true,
   styleUrl: './news-card.component.scss'

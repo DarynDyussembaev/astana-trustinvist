@@ -1,3 +1,9 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 .card__image-wrapper {
   position: relative;
   border: 1px solid #D9D9D9;
@@ -5,6 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-grow: 1;
 }
 .card__absolute {
   position: absolute;

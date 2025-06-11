@@ -16,7 +16,7 @@
 
   <div class="offers-container pt-[32px]">
     <app-card
-      *ngFor="let card of cardsAny"
+      *ngFor="let card of cards"
       [promotion] = "card.categoryName"
       [imageUrl]="card.imageUrl"
       [title]="card.name"

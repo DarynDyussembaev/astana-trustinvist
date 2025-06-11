@@ -1,14 +1,16 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {CardComponent} from '../../../shared/components/card/card.component';
-import {NgForOf} from '@angular/common';
+import {AsyncPipe, NgForOf} from '@angular/common';
 import {Products} from '../../../services/model/product.models';
 import {ProductService} from '../../../services/product.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-special-offers',
   imports: [
     CardComponent,
-    NgForOf
+    NgForOf,
+    AsyncPipe
   ],
   templateUrl: './special-offers.component.html',
   standalone: true,
@@ -17,13 +19,21 @@ import {ProductService} from '../../../services/product.service';
 export class SpecialOffersComponent implements OnInit{
 
   cards: Products[] = [];
-  cardsAny: Products[] = [];
+  cardsAny: BehaviorSubject<Products[]> = new BehaviorSubject<Products[]>([]);
   private productService: ProductService = inject(ProductService);
 
 
   ngOnInit() {
     this.getProductsAll()
     this.getProductsAllAny()
+  }
+
+  getProductsAllAny(): void {
+    this.productService.getProductAll().subscribe({
+      next: (result) => {
+        this.cards = result.slice(0, 4);
+      }
+    });
   }
 
   getProductsAll(): void {
@@ -36,13 +46,6 @@ export class SpecialOffersComponent implements OnInit{
     });
   }
 
-  getProductsAllAny(): void {
-    this.productService.getProductAll().subscribe({
-      next: (result) => {
-        this.cards = result.slice(0, 4);
-      }
-    });
-  }
 
 //   cards = [
 //     {

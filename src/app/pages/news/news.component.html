@@ -5,10 +5,10 @@
    <a href="#" style="font-size: 14px; font-weight: 600; color: #015198;">2024</a>
  </div>
   <main class="news-card mt-[26px]">
-    <div *ngFor="let data of dates">
+    <div *ngFor="let data of news">
       <app-news-card
-      [image]="data.image"
-      [date]="data.date"
+      [image]="data.imageUrl"
+      [date]="data.createdAt"
       [title]="data.title"
       >
       </app-news-card>

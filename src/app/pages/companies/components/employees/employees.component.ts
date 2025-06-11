@@ -1,12 +1,29 @@
-import {Component} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
+import {EmployeesService} from '../../service/employees.service';
+import {Employee} from '../../../../services/model/employee.models';
 
 @Component({
   selector: 'app-employees',
   imports: [],
   templateUrl: './employees.component.html',
+  standalone: true,
   styleUrl: './employees.component.scss'
 })
-export class EmployeesComponent {
+export class EmployeesComponent implements OnInit{
+  // private employeesService: EmployeesService = inject(EmployeesService);
+  // employees: Employee[] = [];
+
+  ngOnInit(): void {
+    // this.getEmployees()
+  }
+
+  // getEmployees() {
+  //   this.employeesService.getAllEmployee().subscribe({
+  //     next: data => {
+  //       this.employees = data;
+  //     }
+  //   })
+  // }
   employees = [
     {
       title: 'Руководители',
