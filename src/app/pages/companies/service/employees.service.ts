@@ -9,7 +9,7 @@ import {Employee} from '../../../services/model/employee.models';
 })
 export class EmployeesService {
   private http = inject(HttpClient);
-  private baseUrl = `${environment.api.baseUrl}/employee`;
+  private baseUrl = `${environment.baseUrl}/employee`;
 
   constructor() { }
 

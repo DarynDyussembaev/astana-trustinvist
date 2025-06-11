@@ -9,7 +9,7 @@ import {NewsCard} from '../pages/news/news.component';
 })
 export class NewsService {
   private http = inject(HttpClient);
-  private baseUrl = `${environment.api.baseUrl}/news`;
+  private baseUrl = `${environment.baseUrl}/news`;
 
 
   constructor() { }
