@@ -1,0 +1,64 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <button class="close-btn" (click)="onCancel()">×</button>
+
+    <h2 class="modal-title">{{ dialogTitle }}</h2>
+
+    <form [formGroup]="newsForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-field">
+        <input
+          type="text"
+          formControlName="title"
+          placeholder="Заголовок новости"
+          class="form-input">
+      </div>
+
+      <div class="form-field">
+            <textarea
+              formControlName="content"
+              placeholder="Содержание"
+              rows="4"
+              class="form-input"></textarea>
+      </div>
+
+      <div class="file-upload-section">
+        <div class="file-upload-left">
+          <span class="subtitle font-medium pl-5">Изображение</span>
+          <div *ngIf="imagePreview || currentImageUrl" class="image-preview-section">
+            <div class="image-preview-container">
+              <img
+                [src]="imagePreview || currentImageUrl"
+                alt="Превью изображения"
+                class="image-preview"
+                (error)="onImageError($event)">
+              <button
+                type="button"
+                class="remove-image-btn"
+                (click)="removeImage()">×</button>
+            </div>
+            <div class="image-info">
+              <span *ngIf="selectedFileName">{{ selectedFileName }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="file-upload-right">
+          <label for="imageFile" class="file-upload-btn">Добавить</label>
+          <input
+            type="file"
+            id="imageFile"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            class="file-input-hidden">
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="newsForm.invalid || (!isEditMode && !selectedFile && !currentImageUrl)"
+        class="btn submit-button">
+        {{ isEditMode ? 'Изменить' : 'Добавить' }}
+      </button>
+    </form>
+  </div>
+</div>

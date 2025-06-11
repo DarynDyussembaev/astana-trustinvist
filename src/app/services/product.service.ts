@@ -9,7 +9,7 @@ import {Products} from './model/product.models';
 })
 export class ProductService {
   private http = inject(HttpClient);
-  private baseUrl = `${environment.api.baseUrl}/product`;
+  private baseUrl = `${environment.baseUrl}/product`;
 
   constructor() { }
 

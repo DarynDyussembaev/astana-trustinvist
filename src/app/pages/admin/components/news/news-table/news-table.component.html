@@ -1,0 +1,11 @@
+<div class="text-right mr-[145px]">
+  <button class="btn" (click)="openCreateDialog()">Добавить</button>
+
+  <app-table
+    [data]="news || []"
+    [config]="tableConfig"
+    [trackByField]="'id'"
+    (actionClicked)="onTableAction($event)"
+    (rowClicked)="onRowClick($event)"
+  ></app-table>
+</div>

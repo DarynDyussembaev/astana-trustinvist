@@ -1,0 +1,89 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <button class="close-btn" (click)="onCancel()">×</button>
+
+    <h2 class="modal-title">{{ dialogTitle }}</h2>
+
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-field">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Наименование"
+          class="form-input">
+      </div>
+
+      <div class="form-field">
+        <input
+          type="text"
+          formControlName="manufacturer"
+          placeholder="Производитель"
+          class="form-input">
+      </div>
+
+      <div class="form-field">
+            <textarea
+              formControlName="description"
+              placeholder="Описание"
+              rows="3"
+              class="form-input"></textarea>
+      </div>
+
+      <div class="form-field">
+        <select formControlName="categoryId" class="form-select">
+          <option value="" disabled>Категория</option>
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="file-upload-section">
+        <div class="file-upload-left">
+          <span class="subtitle font-medium pl-5">Изображение</span>
+          <div *ngIf="imagePreview || currentImageUrl" class="image-preview-section">
+            <div class="image-preview-container">
+              <img
+                [src]="imagePreview || currentImageUrl"
+                alt="Превью изображения"
+                class="image-preview"
+                (error)="onImageError($event)">
+              <button
+                type="button"
+                class="remove-image-btn"
+                (click)="removeImage()">×</button>
+            </div>
+            <div class="image-info">
+              <span *ngIf="selectedFileName">{{ selectedFileName }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="file-upload-right">
+          <label for="imageFile" class="file-upload-btn">Добавить</label>
+          <input
+            type="file"
+            id="imageFile"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            class="file-input-hidden">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <select formControlName="deliveryType" class="form-select">
+          <option value="" disabled>Тип доставки</option>
+          <option value="DELIVERY">Доставка</option>
+          <option value="PICKUP">Самовывоз</option>
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="productForm.invalid || (!isEditMode && !selectedFile && !currentImageUrl)"
+        class="btn submit-button">
+        {{ isEditMode ? 'Изменить' : 'Добавить' }}
+      </button>
+    </form>
+  </div>
+</div>

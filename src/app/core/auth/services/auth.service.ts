@@ -18,28 +18,28 @@ export interface ConfirmCodeData {
 })
 export class AuthService {
   private http = inject(HttpClient);
-  private baseUrl = `${environment.api.baseUrl}`;
+  private baseUrl = `${environment.baseUrl}/auth`;
 
   login(userData: RegisterLoginData): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/login`, userData, {
+    return this.http.post(`${this.baseUrl}/login`, userData, {
       responseType: 'text'
     });
   }
 
   register(userData: RegisterLoginData): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/register`, userData, {
+    return this.http.post(`${this.baseUrl}/register`, userData, {
       responseType: 'text'
     });
   }
 
   confirmCode(data: ConfirmCodeData): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/register/confirm-code`, data, {
+    return this.http.post(`${this.baseUrl}/register/confirm-code`, data, {
       responseType: 'text'
     });
   }
 
   resendCode(email: string): Observable<string> {
-    return this.http.post(`${this.baseUrl}/auth/reset-request`, { email }, {
+    return this.http.post(`${this.baseUrl}/reset-request`, { email }, {
       responseType: 'text'
     });
   }

@@ -1,0 +1,41 @@
+<table>
+  <colgroup>
+    <col *ngFor="let column of config.columns" [style.width]="column.width || '152px'">
+    <col style="width: 100px" *ngIf="hasActions">
+  </colgroup>
+  <thead>
+  <tr>
+    <th *ngFor="let column of config.columns">{{ column.label }}</th>
+    <th *ngIf="hasActions">Действия</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr
+    *ngFor="let item of data; trackBy: trackByFn"
+    class="clickable-row"
+    (click)="onRowClick(item)">
+    <td *ngFor="let column of config.columns">
+      <div *ngIf="isImageColumn(column.key); else textValue">
+        <img
+          *ngIf="getNestedValue(item, column.key)"
+          [src]="getNestedValue(item, column.key)"
+          [alt]="item.name || 'Image'"
+          class="table-image"
+          (error)="onImageError($event)">
+        <span *ngIf="!getNestedValue(item, column.key)" class="no-image">Нет изображения</span>
+      </div>
+      <ng-template #textValue>
+        {{ getNestedValue(item, column.key) }}
+      </ng-template>
+    </td>
+    <td *ngIf="hasActions" class="actions-cell" (click)="$event.stopPropagation()">
+      <button
+        *ngIf="config.actions?.delete"
+        class="delete-btn"
+        (click)="onAction('delete', item)">
+        Удалить
+      </button>
+    </td>
+  </tr>
+  </tbody>
+</table>

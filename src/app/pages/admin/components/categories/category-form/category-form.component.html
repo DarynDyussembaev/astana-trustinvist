@@ -1,0 +1,35 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <button class="close-btn" (click)="onCancel()">×</button>
+
+    <h2 class="modal-title">{{ dialogTitle }}</h2>
+
+    <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-field">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Наименование категории"
+          class="form-input">
+      </div>
+
+      <div class="form-field">
+        <select formControlName="parentId" class="form-select">
+          <option value="" disabled>Родительская категория</option>
+          <option [value]="null">Без родительской категории</option>
+          <option *ngFor="let category of allCategories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="categoryForm.invalid"
+        class="btn submit-button">
+        {{ isEditMode ? 'Изменить' : 'Добавить' }}
+      </button>
+    </form>
+  </div>
+</div>

@@ -8,10 +8,10 @@ import { LoginComponent } from './core/auth/components/login/login.component';
 import { RegisterComponent } from './core/auth/components/register/register.component';
 import { ConfirmCodeComponent } from './core/auth/components/confirm-code/confirm-code.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
-import {NewsComponent} from './pages/news/news.component';
-import {PlacingAnOrderComponent} from './pages/placing-an-order/placing-an-order.component';
-import {CallbackComponent} from './pages/callback/callback.component';
-import {BasketComponent} from './pages/basket/basket.component';
+import { NewsComponent } from './pages/news/news.component';
+import { PlacingAnOrderComponent } from './pages/placing-an-order/placing-an-order.component';
+import { CallbackComponent } from './pages/callback/callback.component';
+import { BasketComponent } from './pages/basket/basket.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'Home', pathMatch: 'full' },
@@ -72,7 +72,26 @@ export const routes: Routes = [
   {
     path: 'admin',
     loadComponent: () => import('./pages/admin/pages/admin-panel/admin-panel.component').then(c => c.AdminPanelComponent),
-    canActivate: [adminGuard]
+    canActivate: [adminGuard],
+    children: [
+      { path: '', redirectTo: 'categories', pathMatch: 'full' },
+      {
+        path: 'categories',
+        loadComponent: () => import('./pages/admin/components/categories/category-table/category-table.component').then(c => c.CategoryTableComponent)
+      },
+      {
+        path: 'products',
+        loadComponent: () => import('./pages/admin/components/products/product-table/product-table.component').then(c => c.ProductTableComponent)
+      },
+      {
+        path: 'employees',
+        loadComponent: () => import('./pages/admin/components/employees/employee-table/employee-table.component').then(c => c.EmployeeTableComponent)
+      },
+      {
+        path: 'news',
+        loadComponent: () => import('./pages/admin/components/news/news-table/news-table.component').then(c => c.NewsTableComponent)
+      }
+    ]
   },
   { path: '**', redirectTo: 'Home' },
 ];

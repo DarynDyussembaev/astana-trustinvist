@@ -1,0 +1,58 @@
+table {
+  width: 697px;
+}
+
+thead {
+  font-size: 10px;
+  color: #363636
+}
+
+tbody {
+  font-size: 10px;
+  color: #015198;
+  font-weight: 400;
+}
+
+tr {
+  text-align: left;
+}
+
+th, td {
+  padding: 16px;
+  border-bottom: 1px solid #D9D9D9;
+  vertical-align: middle;
+}
+
+.clickable-row {
+  cursor: pointer;
+}
+
+.actions-cell {
+  cursor: default;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+  color: #015198;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.table-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  display: block;
+}
+
+.no-image {
+  color: #999;
+  font-style: italic;
+  font-size: 12px;
+}
